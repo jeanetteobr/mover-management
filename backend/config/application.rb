@@ -28,5 +28,10 @@ module Backend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    if Rails.env.test?
+      config.action_controller.allow_forgery_protection = false
+    end
+    
   end
 end
