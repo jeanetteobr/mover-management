@@ -52,4 +52,5 @@ jobs:
 
       - name: Run tests
         working-directory: backend
-        run: bin/rails spec
+        run: bundle exec rspec
+
