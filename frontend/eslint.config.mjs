@@ -9,7 +9,14 @@ export default [
   { languageOptions: { globals: sanitizeGlobals(globals.browser) } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  {
+    ...pluginReact.configs.flat.recommended,
+    settings: {
+      react: {
+        version: "detect" // Automatically detect React version
+      }
+    }
+  }
 ];
 
 function sanitizeGlobals(globals) {
