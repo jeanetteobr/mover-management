@@ -14,7 +14,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "eslintConfig": {
@@ -41,7 +40,6 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "husky": "^8.0.0",
     "lint-staged": "^15.2.11",
     "prettier": "^3.4.2"
   },
