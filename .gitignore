@@ -11,8 +11,7 @@ Thumbs.db
 .vscode/
 *.iml
 
-# Node.js (root and frontend)
-node_modules/              # Ignore root node_modules (for Husky)
+# Node.js (frontend)
 frontend/node_modules/     # Ignore frontend-specific node_modules
 frontend/build/
 frontend/.env.local
@@ -49,3 +48,6 @@ php-admin/.env
 *.bak
 *.old
 *.swp
+
+# Ignore node_modules in the root directory
+node_modules/
