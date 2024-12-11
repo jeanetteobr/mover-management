@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mover-backend
+    env: ruby
+    buildCommand: bundle install && rails db:migrate
+    startCommand: rails s -p $PORT
+    envVars:
+      - key: RAILS_ENV
+        value: production
