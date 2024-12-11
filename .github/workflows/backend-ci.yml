@@ -41,6 +41,9 @@ jobs:
           gem install bundler
           bundle install
 
+      - name: Set environment to test
+        run: echo "RAILS_ENV=test" >> $GITHUB_ENV
+
       - name: Set up database
         working-directory: backend
         run: |
