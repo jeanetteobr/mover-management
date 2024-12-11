@@ -1,19 +1,25 @@
-# General
+# General OS/IDE/System files
 .DS_Store
 Thumbs.db
 *.log
 *.tmp
-*.cache
 *.bak
 *.swp
 *.swo
+*.cache
+.idea/
+.vscode/
+*.iml
 
-# Node (frontend)
-frontend/node_modules/
+# Node.js (root and frontend)
+node_modules/              # Ignore root node_modules (for Husky)
+frontend/node_modules/     # Ignore frontend-specific node_modules
 frontend/build/
 frontend/.env.local
 frontend/.env.development
 frontend/.env.production
+frontend/.next/            # If Next.js is used in the future
+package-lock.json          # Ignore root-level lock file (optional if using Yarn)
 
 # Rails (backend)
 backend/log/
@@ -26,14 +32,20 @@ backend/db/*.sqlite3-journal
 backend/public/assets
 backend/.byebug_history
 
-# PHP (php-admin, optional setup)
+# PHP (php-admin)
 php-admin/vendor/
 php-admin/.env
 
-# System Files
-.vscode/
-.idea/
-*.iml
-
 # GitHub
 .github/workflows/*.lock
+
+# Docker (if using Docker for containerization)
+*.docker
+**/Dockerfile
+**/docker-compose.yml
+.dockerignore
+
+# Miscellaneous
+*.bak
+*.old
+*.swp
