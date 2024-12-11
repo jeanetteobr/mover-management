@@ -1,4 +1,4 @@
-name: Rails Backend CI
+name: Backend CI
 
 on:
   push:
@@ -45,4 +45,4 @@ jobs:
           bin/rails db:create db:migrate
 
       - name: Run tests
-        run: bin/rails test
+        run: bin/rails spec
