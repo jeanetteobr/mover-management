@@ -54,3 +54,15 @@ jobs:
         working-directory: backend
         run: bundle exec rspec
 
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deployment
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          echo "Starting Render Deployment..."
+          curl -v -X POST "https://api.render.com/v1/services/srv-ctct0jpopnds73anu9lg/deploys" \
+          -H "Authorization: Bearer $RENDER_API_KEY"
+          echo "Render Deployment Trigger Complete."
