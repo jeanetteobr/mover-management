@@ -27,7 +27,8 @@ jobs:
           --health-retries=5
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -35,14 +36,17 @@ jobs:
           ruby-version: 3.2.2
 
       - name: Install dependencies
+        working-directory: backend
         run: |
           gem install bundler
-          bundle install --jobs 4 --retry 3
+          bundle install
 
       - name: Set up database
+        working-directory: backend
         run: |
           cp config/database.yml.ci config/database.yml
           bin/rails db:create db:migrate
 
       - name: Run tests
+        working-directory: backend
         run: bin/rails spec
