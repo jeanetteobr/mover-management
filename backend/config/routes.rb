@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root "welcome#index"
+  root to: "application#index"
+  namespace :api do
+    resources :customers
+  end
 end

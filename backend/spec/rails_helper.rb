@@ -5,6 +5,7 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'database_cleaner/active_record'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -26,8 +27,25 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   # Include Rails-specific helpers
   config.include Rails.application.routes.url_helpers
   config.include ActionDispatch::IntegrationTest::Behavior, type: :request
+  config.include FactoryBot::Syntax::Methods
+
+  # Clean the database before running tests
+  config.use_transactional_fixtures = true
+
+  # Database Cleaner configuration
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
